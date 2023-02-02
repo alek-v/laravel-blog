@@ -2,18 +2,39 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\File;
+use Spatie\YamlFrontMatter\YamlFrontMatter;
+
 class Post
 {
+    public function __construct(public string $title, public string|int $date, public string $description, public string $body, public string $link) {}
+
     /**
      * Find article and return content of the article
      *
      * @param string $article
-     * @return string
+     * @return Post
      */
-    public static function find(string $article): string
+    public static function find(string $article): Post
     {
-        if (!file_exists($path = resource_path("/posts/{$article}.html"))) abort(404);
+        return static::all()->firstWhere('link', $article);
+    }
 
-        return cache()->remember("posts.{$article}", 5, fn () => file_get_contents($path));
+    /**
+     * Return all articles
+     *
+     * @return object
+     */
+    public static function all(): object
+    {
+        return collect(File::files(resource_path("posts")))
+            ->map(fn ($article) => YamlFrontMatter::parseFile($article))
+            ->map(fn ($blog_article) => new Post(
+                $blog_article->title,
+                $blog_article->date,
+                $blog_article->description,
+                $blog_article->body(),
+                $blog_article->link
+            ));
     }
 }
