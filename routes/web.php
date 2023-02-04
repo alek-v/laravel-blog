@@ -21,6 +21,6 @@ Route::get('/', function () {
     return view('welcome', ['posts' => $all_articles]);
 });
 
-Route::get('/posts/{article}', function ($article) {
-    return view('post', ['post_content' => Post::findOrFail($article)]);
+Route::get('/posts/{article}', function ($id) {
+    return view('post', ['post_content' => Post::findOrFail($id)]);
 });

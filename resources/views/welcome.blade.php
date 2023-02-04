@@ -6,7 +6,7 @@
 <h1>Hello Laravel</h1>
 @foreach ($posts as $post)
     <article>
-        <h2><a href="/posts/{{ $post->link }}">{{ $post->title }}</a></h2>
+        <h2><a href="/posts/{{ $post->id }}">{{ $post->title }}</a></h2>
         <p>{{ $post->description }}</p>
     </article>
 @endforeach
