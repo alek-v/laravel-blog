@@ -7,6 +7,7 @@
 @foreach ($posts as $post)
     <article>
         <h2><a href="/posts/{{ $post->slug }}">{{ $post->title }}</a></h2>
+        <p>{{ $post->category->name }}</p>
         <p>{{ $post->description }}</p>
     </article>
 @endforeach
