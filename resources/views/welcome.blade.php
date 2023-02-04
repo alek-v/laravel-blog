@@ -10,11 +10,11 @@
 </head>
 <body>
     <h1>Hello Laravel</h1>
-    <?php foreach ($posts as $post) : ?>
+    @foreach ($posts as $post)
         <article>
-            <h2><a href="/posts/<?= $post->link; ?>"><?= $post->title; ?></a></h2>
-            <p><?= $post->description; ?></p>
+            <h2><a href="/posts/{{ $post->link }}">{{ $post->title }}</a></h2>
+            <p>{{ $post->description }}</p>
         </article>
-    <?php endforeach; ?>
+    @endforeach
 </body>
 </html>
