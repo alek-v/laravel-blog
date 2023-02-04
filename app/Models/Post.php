@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\File;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 
@@ -13,11 +14,29 @@ class Post
      * Find article and return content of the article
      *
      * @param string $article
-     * @return Post
+     * @return ?Post
      */
-    public static function find(string $article): Post
+    public static function find(string $article): ?Post
     {
         return static::all()->firstWhere('link', $article);
+    }
+
+    /**
+     * Get article content or throw an exception
+     *
+     * @param string $get_article
+     * @return Post
+     * @throws ModelNotFoundException
+     */
+    public static function findOrFail(string $get_article): Post
+    {
+        $article = static::find($get_article);
+
+        if (! $article) {
+            throw new ModelNotFoundException();
+        }
+
+        return $article;
     }
 
     /**
