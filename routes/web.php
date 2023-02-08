@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
+use App\Models\Category;
 
 
 /*
@@ -16,11 +17,13 @@ use App\Models\Post;
 */
 
 Route::get('/', function () {
-    $all_articles = Post::all();
-
-    return view('welcome', ['posts' => $all_articles]);
+    return view('welcome', ['posts' => Post::all()]);
 });
 
-Route::get('/posts/{article:slug}', function (Post $article) {
+Route::get('posts/{article:slug}', function (Post $article) {
     return view('post', ['post_content' => $article]);
+});
+
+Route::get('categories/{category:slug}', function (Category $category) {
+    return view('category', ['posts' => $category->posts]);
 });

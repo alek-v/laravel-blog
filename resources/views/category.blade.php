@@ -3,13 +3,15 @@
 
 @section('content')
 
-<h1>Hello Laravel</h1>
 @foreach ($posts as $post)
     <article>
+        <h1>{{ $post->category->name }}</h1>
         <h2><a href="/posts/{{ $post->slug }}">{{ $post->title }}</a></h2>
-        <p><a href="/categories/{{ $post->category->slug }}">{{ $post->category->name }}</a></p>
         <p>{{ $post->description }}</p>
     </article>
+    <div>
+        <p><a href="/">Main page</a></p>
+    </div>
 @endforeach
 
 @endsection

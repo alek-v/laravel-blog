@@ -2,8 +2,10 @@
 <x-layout>
     <article>
         <h1>{{ $post_content->title }}</h1>
-        <p> {{ $post_content->category->name }}</p>
+        <p><a href="/categories/{{ $post_content->category->slug }}">{{ $post_content->category->name }}</a></p>
         <div style="margin: 60px 0px;">{!! $post_content->body !!}</div>
     </article>
-    <a href="/">Main page</a>
+    <div>
+        <p><a href="/">Main page</a></p>
+    </div>
 </x-layout>
