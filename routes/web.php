@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
 use App\Models\Category;
-
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +27,8 @@ Route::get('posts/{article:slug}', function (Post $article) {
 
 Route::get('categories/{category:slug}', function (Category $category) {
     return view('category', ['posts' => $category->posts]);
+});
+
+Route::get('authors/{author}', function (User $author) {
+    return view('author', ['posts' => $author->posts]);
 });
