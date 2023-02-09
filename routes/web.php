@@ -18,7 +18,7 @@ use App\Models\Category;
 
 Route::get('/', function () {
     // Select all post and their categories
-    return view('welcome', ['posts' => Post::with('category')->get()]);
+    return view('welcome', ['posts' => Post::latest()->with('category', 'author')->get()]);
 });
 
 Route::get('posts/{article:slug}', function (Post $article) {

@@ -18,10 +18,10 @@ class Post extends Model
     }
 
     /**
-     * @return User
+     * @return object
      */
-    public function user(): object
+    public function author(): object
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
