@@ -15,5 +15,5 @@
 <div>
     <p><a href="/">Main page</a></p>
 </div>
-    
+
 @endsection

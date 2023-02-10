@@ -18,7 +18,7 @@ use App\Models\User;
 
 Route::get('/', function () {
     // Select all post and their categories
-    return view('welcome', ['posts' => Post::latest()->with('category', 'author')->get()]);
+    return view('welcome', ['posts' => Post::latest()->get()]);
 });
 
 Route::get('posts/{article:slug}', function (Post $article) {
@@ -26,9 +26,9 @@ Route::get('posts/{article:slug}', function (Post $article) {
 });
 
 Route::get('categories/{category:slug}', function (Category $category) {
-    return view('category', ['posts' => $category->posts->load(['category', 'author'])]);
+    return view('category', ['posts' => $category->posts]);
 });
 
 Route::get('authors/{author:username}', function (User $author) {
-    return view('author', ['posts' => $author->posts->load(['category', 'author'])]);
+    return view('author', ['posts' => $author->posts]);
 });
