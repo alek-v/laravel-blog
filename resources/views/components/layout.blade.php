@@ -9,20 +9,6 @@
     <title>Blog</title>
 </head>
 <body>
-    @include('_header')
-    <main class="container">
-        @yield('featured')
-        <div class="row mb-2">
-            @yield('featured-post')
-            @yield('featured-post')
-        </div>
-        <div class="d-flex justify-content-around mb-4">
-            @yield('blog-card')
-            @yield('blog-card')
-            @yield('blog-card')
-        </div>
-    </main> <!-- end of main -->
-    @yield('subscription')
-    @include('_footer')
+    {{ $slot }}
 </body>
 </html>
