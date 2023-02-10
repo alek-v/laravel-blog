@@ -9,9 +9,11 @@
         <h2><a href="/posts/{{ $post->slug }}">{{ $post->title }}</a></h2>
         <p>{{ $post->description }}</p>
     </article>
-    <div>
-        <p><a href="/">Main page</a></p>
-    </div>
+
 @endforeach
 
+<div>
+    <p><a href="/">Main page</a></p>
+</div>
+    
 @endsection
