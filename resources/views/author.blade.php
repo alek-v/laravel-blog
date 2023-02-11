@@ -1,8 +1,4 @@
-{{-- Using yield for layout --}}
-@extends('layout')
-
-@section('content')
-
+<x-layout>
     @foreach ($posts as $post)
         <article>
             <p><a href="/posts/{{ $post->slug }}">{{ $post->title }}</a></p>
@@ -14,5 +10,4 @@
     <div>
         <p><a href="/">Home page</a></p>
     </div>
-
-@endsection
+</x-layout>
