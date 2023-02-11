@@ -7,5 +7,5 @@ Blog created with a Laravel framework.
 
 Install and add some data:
 ```
-php arisan migrate --seed
+php artisan migrate --seed
 ```
