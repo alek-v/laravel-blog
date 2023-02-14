@@ -9,6 +9,8 @@
     <title>Blog</title>
 </head>
 <body>
+    @include('_posts-header')
     {{ $slot }}
+    @include('_posts-footer')
 </body>
 </html>
