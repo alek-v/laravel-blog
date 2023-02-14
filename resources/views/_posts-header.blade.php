@@ -5,7 +5,7 @@
                 <a class="link-secondary" href="#">Subscribe</a>
             </div>
             <div class="col-4 text-center">
-                <a class="blog-header-logo text-dark" href="#">Large</a>
+                <a class="blog-header-logo text-dark" href="/">Laravel Blog</a>
             </div>
             <div class="col-4 d-flex justify-content-end align-items-center">
                 <a class="link-secondary" href="#" aria-label="Search">
@@ -15,4 +15,18 @@
             </div>
         </div>
     </header>
+    <div class="mt-5 mb-5">
+        <div x-data="{ open: false }">
+            <button @click="open = true" class="btn btn-primary">
+                {{ isset($currentCategory) ? $currentCategory->name : 'Category' }}
+            </button>
+
+            <div x-show="open" @click.away="open = false" style="display: none;position: absolute;width: 100%;background-color: #fff;">
+                <a href="/" class="d-block p-1">All categories</a>
+                @foreach($categories as $category)
+                    <a href="/categories/{{ $category->slug }}" class="d-block p-1 {{ isset($currentCategory) && $currentCategory->is($category) ? 'bg-secondary text-light rounded' : '' }}">{{ $category->name }}</a>
+                @endforeach
+            </div>
+        </div>
+    </div>
 </div>

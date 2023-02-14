@@ -18,17 +18,30 @@ use App\Models\User;
 
 Route::get('/', function () {
     // Select all post and their categories
-    return view('welcome', ['posts' => Post::latest()->get()]);
+    return view('welcome', [
+        'posts' => Post::latest()->get(),
+        'categories' => Category::all()
+    ]);
 });
 
 Route::get('posts/{article:slug}', function (Post $article) {
-    return view('post', ['post_content' => $article]);
+    return view('post', [
+        'post_content' => $article,
+        'categories' => Category::all()
+    ]);
 });
 
 Route::get('categories/{category:slug}', function (Category $category) {
-    return view('category', ['posts' => $category->posts]);
+    return view('category', [
+        'posts' => $category->posts,
+        'currentCategory' => $category,
+        'categories' => Category::all()
+    ]);
 });
 
 Route::get('authors/{author:username}', function (User $author) {
-    return view('author', ['posts' => $author->posts]);
+    return view('author', [
+        'posts' => $author->posts,
+        'categories' => Category::all()
+    ]);
 });

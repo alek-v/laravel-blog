@@ -1,4 +1,5 @@
 <x-layout>
+    @include('_posts-header')
     <div class="container">
         <article>
             <h1>{{ $post_content->title }}</h1>
