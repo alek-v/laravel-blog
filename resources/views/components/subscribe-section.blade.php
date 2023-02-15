@@ -1,5 +1,5 @@
 <section class="subscription bg-white">
-    <div class="container">
+    <div class="container" style="max-width: 70%;">
         <div class="row">
             <div class="col-lg-12">
                 <div class="subscription-wrapper">

@@ -18,7 +18,7 @@
     <div class="mt-5 mb-5">
         <x-category-dropdown-menu>
             <x-slot name="trigger">
-                <button class="btn btn-primary">
+                <button class="btn btn-primary mb-2">
                     {{ isset($currentCategory) ? $currentCategory->name : 'Categories' }}
                 </button>
             </x-slot>

@@ -7,7 +7,7 @@
     </div>
 
     {{-- dropdown links --}}
-    <div x-show="open" @click.away="open = false" style="display: none;position: absolute;width: 100%;background-color: #fff;">
+    <div x-show="open" @click.away="open = false" class="rounded" style="display: none;position: absolute;min-width: 250px;background-color: #fff;">
         {{ $slot }}
     </div>
 </div>
