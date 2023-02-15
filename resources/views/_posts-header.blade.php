@@ -16,17 +16,18 @@
         </div>
     </header>
     <div class="mt-5 mb-5">
-        <div x-data="{ open: false }">
-            <button @click="open = true" class="btn btn-primary">
-                {{ isset($currentCategory) ? $currentCategory->name : 'Category' }}
-            </button>
+        <x-category-dropdown-menu>
+            <x-slot name="trigger">
+                <button class="btn btn-primary">
+                    {{ isset($currentCategory) ? $currentCategory->name : 'Categories' }}
+                </button>
+            </x-slot>
 
-            <div x-show="open" @click.away="open = false" style="display: none;position: absolute;width: 100%;background-color: #fff;">
-                <a href="/" class="d-block p-1">All categories</a>
-                @foreach($categories as $category)
-                    <a href="/categories/{{ $category->slug }}" class="d-block p-1 {{ isset($currentCategory) && $currentCategory->is($category) ? 'bg-secondary text-light rounded' : '' }}">{{ $category->name }}</a>
-                @endforeach
-            </div>
-        </div>
+            <x-category-dropdown-item href="/" :active="request()->routeIs('home')">All categories</x-category-dropdown-item>
+
+            @foreach($categories as $category)
+                <x-category-dropdown-item href="/categories/{{ $category->slug }}" :active="isset($currentCategory) && $currentCategory->is($category)">{{ $category->name }}</x-category-dropdown-item>
+            @endforeach
+        </x-category-dropdown-menu>
     </div>
 </div>
