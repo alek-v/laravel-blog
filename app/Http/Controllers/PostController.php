@@ -11,7 +11,7 @@ class PostController extends Controller
 {
     public function index(): object
     {
-        return view('welcome', [
+        return view('posts.index', [
             'posts' => Post::latest()->filter(request(['search']))->get(),
             'categories' => Category::all()
         ]);
@@ -19,7 +19,7 @@ class PostController extends Controller
 
     public function show(Post $article): object
     {
-        return view('post', [
+        return view('posts.show', [
             'post_content' => $article,
             'categories' => Category::all()
         ]);
