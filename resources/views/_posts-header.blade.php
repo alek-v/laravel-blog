@@ -8,13 +8,10 @@
                 <a class="blog-header-logo text-dark" href="/">Laravel Blog</a>
             </div>
             <div class="col-4 d-flex justify-content-end align-items-center">
-                <form method="GET" action="" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                <form method="GET" action="/" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
                     <input type="search" name="search" class="form-control form-control-light" placeholder="Search..." aria-label="Search">
                 </form>
             </div>
         </div>
     </header>
-    <div class="mt-5 mb-5">
-        <x-category-dropdown />
-    </div>
 </div>
