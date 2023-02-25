@@ -9,7 +9,7 @@
                         <button type="submit" class="btn btn-primary">Log Out</button>
                     </form>
                 @else
-                    <a href="/login" class="link-secondary">Log In</a>
+                    <a href="/login" class="link-secondary m-3">Log In</a>
                     <a href="/register" class="link-secondary">Register</a>
                 @endauth
             </div>
