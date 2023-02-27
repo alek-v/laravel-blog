@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
     <title>Blog</title>
 </head>
-<body>
+<body class="d-flex flex-column">
     {{ $slot }}
     @include('_posts-footer')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

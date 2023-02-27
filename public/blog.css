@@ -3,74 +3,61 @@
 .blog-header {
     border-bottom: 1px solid #e5e5e5;
   }
-  
-  .blog-header-logo {
+
+.blog-header-logo {
     font-family: "Playfair Display", Georgia, "Times New Roman", serif/*rtl:Amiri, Georgia, "Times New Roman", serif*/;
     font-size: 2.25rem;
-  }
-  
-  .blog-header-logo:hover {
+}
+
+.blog-header-logo:hover {
     text-decoration: none;
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
+}
+
+h1, h2, h3, h4, h5, h6 {
     font-family: "Playfair Display", Georgia, "Times New Roman", serif/*rtl:Amiri, Georgia, "Times New Roman", serif*/;
-  }
-  
-  .display-4 {
+}
+
+.display-4 {
     font-size: 2.5rem;
-  }
-  @media (min-width: 768px) {
+}
+@media (min-width: 768px) {
     .display-4 {
       font-size: 3rem;
     }
-  }
-  
-  .flex-auto {
+}
+
+.flex-auto {
     flex: 0 0 auto;
-  }
-  
-  .h-250 { height: 250px; }
-  @media (min-width: 768px) {
-    .h-md-250 { height: 250px; }
-  }
-  
-  /* Pagination */
-  .blog-pagination {
+}
+
+.h-250 { height: 250px; }
+    @media (min-width: 768px) {
+        .h-md-250 {
+            height: 250px;
+        }
+}
+
+/* Pagination */
+.blog-pagination {
     margin-bottom: 4rem;
-  }
-  
-  /*
-   * Blog posts
-   */
-  .blog-post {
+}
+
+/* Blog posts */
+.blog-post {
     margin-bottom: 4rem;
-  }
-  .blog-post-title {
+}
+
+.blog-post-title {
     font-size: 2.5rem;
-  }
-  .blog-post-meta {
+}
+
+.blog-post-meta {
     margin-bottom: 1.25rem;
     color: #727272;
-  }
-  
-  /*
-   * Footer
-   */
-  .blog-footer {
-    padding: 2.5rem 0;
-    color: #727272;
-    text-align: center;
-    background-color: #f9f9f9;
-    border-top: .05rem solid #e5e5e5;
-  }
-  .blog-footer p:last-child {
-    margin-bottom: 0;
-  }
+}
 
-
-
-  .subscription.bg-white {
+/* Subscription*/
+.subscription.bg-white {
     background: none;
 }
 
@@ -90,7 +77,7 @@
     padding: 70px 50px;
     z-index: 1;
     width: 100%;
-    background: linear-gradient(80deg, #0030cc 0%, #00a4db 100%);    
+    background: linear-gradient(80deg, #0030cc 0%, #00a4db 100%);
 }
 
 .subscription-wrapper {
@@ -102,7 +89,7 @@
     transform: skewY(-1deg);
 }
 
-h3, .h3 {
+.subscription-content h3, .h3 {
     font-size: 30px;
 }
 
@@ -160,4 +147,17 @@ h3, .h3 {
     background: linear-gradient(45deg, #00a8f4 0%, #02d1a1 100%);
     z-index: -1;
     transition: ease 0.3s;
+}
+
+/* Footer */
+.blog-footer {
+    padding: 20px 0;
+    color: #727272;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-top: .05rem solid #e5e5e5;
+}
+
+.blog-footer p:last-child {
+    margin-bottom: 0;
 }
