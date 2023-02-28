@@ -13,7 +13,10 @@
                             <p class="ms-4 mb-0">Add a comment</p>
                         </div>
                         <div class="mt-3">
-                            <textarea id="comment_text" name="comment_text" rows="5" placeholder="Write a comment here" class="form-control"></textarea>
+                            <textarea id="comment_text" name="comment_text" rows="5" placeholder="Write a comment here" class="form-control" required></textarea>
+                            @error('comment_text')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                         @csrf
                         <div class="mt-2">
