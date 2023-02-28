@@ -6,10 +6,9 @@
             <x-author-category-button :category="$post_content->category" :author="$post_content->author" />
             <div style="margin: 60px 0px;">{!! $post_content->body !!}</div>
             <section>
-                <x-post-comment />
-                <x-post-comment />
-                <x-post-comment />
-                <x-post-comment />
+                @foreach ($post_content->comments as $comment)
+                    <x-post-comment :comment="$comment" />
+                @endforeach
             </section>
         </article>
     </div>
