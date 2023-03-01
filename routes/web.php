@@ -19,6 +19,32 @@ use App\Models\User;
 |
 */
 
+Route::post('newsletter', function() {
+    request()->validate([
+        'email_address' => 'required|email'
+    ]);
+
+    $mailchimp = new \MailchimpMarketing\ApiClient();
+
+    $mailchimp->setConfig([
+        'apiKey' => config('services.mailchimp.key'),
+        'server' => 'us21'
+    ]);
+
+    try {
+        $mailchimp->lists->addListMember("8988da347c", [
+            "email_address" => request('email_address'),
+            "status" => "subscribed",
+        ]);
+    } catch (\Exception $e) {
+        throw \Illuminate\Validation\ValidationException::withMessages([
+           'email_address' => 'Email could not be added to our newsletter list.'
+        ]);
+    }
+
+    return redirect('/')->with('success', 'You are now subscribed to the our newsletter list.');
+});
+
 Route::get('/', [PostController::class, 'index'])->name('home');
 
 Route::get('posts/{article:slug}', [PostController::class, 'show']);
