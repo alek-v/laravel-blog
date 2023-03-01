@@ -1,12 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Validation\ValidationException;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\PostCommentsController;
 use App\Models\Category;
 use App\Models\User;
+use App\Services\Newsletter;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,25 +21,15 @@ use App\Models\User;
 |
 */
 
-Route::post('newsletter', function() {
+Route::post('newsletter', function(Newsletter $newsletter) {
     request()->validate([
         'email_address' => 'required|email'
     ]);
 
-    $mailchimp = new \MailchimpMarketing\ApiClient();
-
-    $mailchimp->setConfig([
-        'apiKey' => config('services.mailchimp.key'),
-        'server' => 'us21'
-    ]);
-
     try {
-        $mailchimp->lists->addListMember("8988da347c", [
-            "email_address" => request('email_address'),
-            "status" => "subscribed",
-        ]);
-    } catch (\Exception $e) {
-        throw \Illuminate\Validation\ValidationException::withMessages([
+        $newsletter->subscribe(request('email_address'));
+    } catch (Exception $e) {
+        throw ValidationException::withMessages([
            'email_address' => 'Email could not be added to our newsletter list.'
         ]);
     }
