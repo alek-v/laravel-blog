@@ -23,4 +23,9 @@ class PostController extends Controller
             'categories' => Category::all()
         ]);
     }
+
+    public function create()
+    {
+        return view('posts.create');
+    }
 }
