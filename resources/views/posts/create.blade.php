@@ -2,7 +2,7 @@
     @include('_posts-header')
     <div class="container">
         <h1>Create a post</h1>
-        <form action="/admin/posts/create" method="POST" class="mb-5 mt-5">
+        <form action="/admin/posts/create" method="POST" enctype="multipart/form-data" class="mb-5 mt-5">
             <!-- title -->
             <label for="title" class="form-label">Title</label>
             <input type="text" id="title" name="title" value="{{ old('title') }}" class="form-control" />
@@ -17,6 +17,15 @@
             <input type="text" id="slug" name="slug" value="{{ old('slug') }}" class="form-control" />
             @error('slug')
                 <span id="passwordHelpInline" class="d-block mb-2 form-text text-danger">
+                    {{ $message }}
+                </span>
+            @enderror
+
+            <!-- thumbnail -->
+            <label for="thumbnail" class="form-label">Thumbnail</label>
+            <input type="file" id="thumbnail" name="thumbnail" value="{{ old('thumbnail') }}" class="form-control" />
+            @error('thumbnail')
+            <span id="passwordHelpInline" class="d-block mb-2 form-text text-danger">
                     {{ $message }}
                 </span>
             @enderror
