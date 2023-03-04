@@ -1,26 +1,41 @@
-<div class="container">
-    <header class="blog-header lh-1 py-3">
-        <div class="row flex-nowrap justify-content-between align-items-center">
-            <div class="col-4 pt-1">
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Laravel Blog</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                </li>
                 @auth
-                    <span>Welcome back, {{ auth()->user()->name }}</span>
-                    <form method="POST" action="/logout" class="mt-2">
-                        @csrf
-                        <button type="submit" class="btn btn-primary">Log Out</button>
-                    </form>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Hello, {{ auth()->user()->name }}
+                        </a>
+                        <ul class="dropdown-menu">
+                            @if (auth()->user()->username == 'aleksandar')
+                                <li><a class="dropdown-item" href="#">Dashboard</a></li>
+                                <li><a class="dropdown-item" href="/admin/posts/create">New Post</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                            @endif
+                            <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                        </ul>
+                    </li>
                 @else
-                    <a href="/login" class="link-secondary m-3">Log In</a>
-                    <a href="/register" class="link-secondary">Register</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register">Register</a>
+                    </li>
                 @endauth
-            </div>
-            <div class="col-4 text-center">
-                <a class="blog-header-logo text-dark" href="/">Laravel Blog</a>
-            </div>
-            <div class="col-4 d-flex justify-content-end align-items-center">
-                <form method="GET" action="/" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                    <input type="search" name="search" class="form-control form-control-light" placeholder="Search..." aria-label="Search">
-                </form>
-            </div>
+            </ul>
+            <form method="GET" action="/" class="d-flex" role="search">
+                <input name="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
         </div>
-    </header>
-</div>
+    </div>
+</nav>
