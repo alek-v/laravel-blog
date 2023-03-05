@@ -16,7 +16,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             @if (auth()->user()->username == 'aleksandar')
-                                <li><a class="dropdown-item" href="#">Dashboard</a></li>
+                                <li><a class="dropdown-item" href="/admin/posts">All Posts</a></li>
                                 <li><a class="dropdown-item" href="/admin/posts/create">New Post</a></li>
                                 <li><hr class="dropdown-divider"></li>
                             @endif

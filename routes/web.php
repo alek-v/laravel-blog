@@ -6,6 +6,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\PostCommentsController;
 use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\AdminPostController;
 use App\Models\Category;
 use App\Models\User;
 
@@ -47,5 +48,6 @@ Route::get('login', [SessionsController::class, 'create'])->middleware('guest');
 
 Route::get('logout', [SessionsController::class, 'destroy'])->middleware('auth');
 
+Route::get('admin/posts', [AdminPostController::class, 'index'])->middleware('administrator');
 Route::get('admin/posts/create', [PostController::class, 'create'])->middleware('administrator');
 Route::post('admin/posts/create', [PostController::class, 'store'])->middleware('administrator');
