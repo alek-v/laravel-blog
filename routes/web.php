@@ -47,9 +47,12 @@ Route::get('login', [SessionsController::class, 'create'])->middleware('guest');
 Route::post('login', [SessionsController::class, 'store'])->middleware('guest');
 Route::get('logout', [SessionsController::class, 'destroy'])->middleware('auth');
 
-Route::get('admin/posts', [AdminPostController::class, 'index'])->middleware('can:administrator');
-Route::get('admin/posts/{post}/edit', [AdminPostController::class, 'edit'])->middleware('can:administrator');
-Route::get('admin/posts/create', [AdminPostController::class, 'create'])->middleware('can:administrator');
-Route::post('admin/posts/create', [AdminPostController::class, 'store'])->middleware('can:administrator');
-Route::patch('admin/posts/{post}', [AdminPostController::class, 'update'])->middleware('can:administrator');
-Route::delete('admin/posts/{post}', [AdminPostController::class, 'destroy'])->middleware('can:administrator');
+Route::middleware('can:administrator')->group(function () {
+    Route::get('admin/posts', [AdminPostController::class, 'index']);
+    Route::get('admin/posts/{post}/edit', [AdminPostController::class, 'edit']);
+    Route::get('admin/posts/create', [AdminPostController::class, 'create']);
+    Route::post('admin/posts/create', [AdminPostController::class, 'store']);
+    Route::patch('admin/posts/{post}', [AdminPostController::class, 'update']);
+    Route::delete('admin/posts/{post}', [AdminPostController::class, 'destroy']);
+    // Route::resource('admin/posts', AdminPostController::class)->except('show');
+});
