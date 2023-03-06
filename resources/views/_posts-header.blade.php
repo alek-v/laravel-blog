@@ -15,7 +15,7 @@
                             Hello, {{ auth()->user()->name }}
                         </a>
                         <ul class="dropdown-menu">
-                            @if (auth()->user()->username == 'aleksandar')
+                            @if (auth()->user()->can('administrator'))
                                 <li><a class="dropdown-item" href="/admin/posts">All Posts</a></li>
                                 <li><a class="dropdown-item" href="/admin/posts/create">New Post</a></li>
                                 <li><hr class="dropdown-divider"></li>
